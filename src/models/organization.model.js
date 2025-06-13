@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { OrganisationUser } from './organizationUser.model';
 
 const { Schema } = mongoose;
 
@@ -17,7 +18,7 @@ const organizationSchema = new Schema({
 
   superAdmin: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: OrganisationUser,
     required: true
   },
 

@@ -1,3 +1,4 @@
+import { OrganisationUser } from "../models/organizationUser.model.js";
 import { Organization } from "../models/organization.model.js";
 import { User } from "../models/user.model.js";
 
@@ -43,14 +44,22 @@ async function createOrganisation(req, res) {
     const organization = new Organization({
       name,
       description,
-      superAdmin: user._id,
       plan: 'free',
       planValidity: null
     });
 
+    const organizationUser = new OrganisationUser({
+      organizationId: organization._id,
+      userId: user._id,
+      roleType: 'owner',  
+      enrollment: 'joined',
+    });
+
+    await organizationUser.save();
+    organization.superAdmin = organizationUser._id;
     await organization.save();
     user.ownedOrganizations.push(organization._id);
-    await user.save(); // todo: cover organization and ownedOrganizations.push in single query or in a transaction
+    await user.save(); // todo: cover all 3 saves in single query or in a transaction
 
     res.status(201).json({ success: true, message: 'Organisation created' });
   } catch (err) {
