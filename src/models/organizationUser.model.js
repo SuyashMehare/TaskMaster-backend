@@ -37,6 +37,11 @@ const organisationUserSchema = new Schema({
     createdOn: {
         type: Date,
         default: new Date()
+    },
+
+    accessExpiry: {
+        type: Date,
+        default: null
     }
 }, {
     timestamps: true

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { DEPARTMENTS } from '../constants/department.js';
+import { OrganisationUser } from "./organizationUser.model.js";
 
 const { Schema } = mongoose;
 
@@ -29,7 +30,7 @@ const teamSchema = new Schema({
 
   members: [{
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: OrganisationUser
   }]
 }, {
   timestamps: true

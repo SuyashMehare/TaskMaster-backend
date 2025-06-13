@@ -24,12 +24,17 @@ const organizationSchema = new Schema({
 
   assignees: [{
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: OrganisationUser
+  }],
+
+  waitingList: [{
+    type: Schema.Types.ObjectId,
+    ref: OrganisationUser
   }],
 
   teams: [{
     type: Schema.Types.ObjectId,
-    ref: 'Team'
+    ref: OrganisationUser
   }],
 
   plan: {
