@@ -5,8 +5,9 @@ const { Schema } = mongoose;
 const organizationSchema = new Schema({
   name: {
     type: String,
+    unique: [true, 'Organization name must be unique'],
     required: true,
-    trim: true
+    trim: true,
   },
 
   description: {
@@ -44,4 +45,4 @@ const organizationSchema = new Schema({
   timestamps: true
 });
 
-export default mongoose.model('Organization', organizationSchema);
+export const Organization = mongoose.model('Organization', organizationSchema);

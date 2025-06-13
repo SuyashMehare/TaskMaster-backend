@@ -35,7 +35,6 @@ const teamSchema = new Schema({
   timestamps: true
 });
 
-// Unique team label within an organization
 teamSchema.index({ organisationId: 1, label: 1 }, { unique: true });
 
 export default mongoose.model('Team', teamSchema);

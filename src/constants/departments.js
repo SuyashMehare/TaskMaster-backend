@@ -6,7 +6,7 @@ export const DEPARTMENTS = [
   'product',
   'support',
   'hr',
-  'finance'
+  'finance',
 ];
 
 // todo: AI suggesting department colors
