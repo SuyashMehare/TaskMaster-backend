@@ -6,7 +6,7 @@ import { Story } from "../models/story.model.js";
 const ALLOWED_ROLES = ['owner', 'admin'];
 
 const productSchema = new Schema({
-    organisationId: {
+    organizationId: {
         type: Schema.Types.ObjectId,
         ref: Organization,
         required: true
@@ -16,11 +16,11 @@ const productSchema = new Schema({
         ref: OrganisationUser, // Reference to OrganisationUser model
         required: true
     },
-    authRoles: [{
+    authRole: {
         type: String,
         enum: ALLOWED_ROLES, // Restrict to 'owner' or 'admin'
         required: true
-    }],
+    },
     name: {
         type: String,
         required: true,
@@ -38,6 +38,10 @@ const productSchema = new Schema({
         required: true,
         unique: true
     },
+    epics: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Epic'
+    }],
     stories: [{
         type: Schema.Types.ObjectId,
         ref: Story

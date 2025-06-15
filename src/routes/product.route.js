@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { createOrganisationProduct } from "../controllers/index.js";
+import { createOrganisationProduct, getOrganisationProducts } from "../controllers/index.js";
 const productRouter = Router();
 
-productRouter.post('/create', createOrganisationProduct);
+productRouter
+.post('/create', createOrganisationProduct)
+.post('/all', getOrganisationProducts);
 
 export {
     productRouter

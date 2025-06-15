@@ -1,6 +1,6 @@
 import { test, createUser } from "./user.controller.js";
 import { testOrg, createOrganisation, fetchOrganizationDetails } from "./organisation.controller.js";
-import { createOrganisationProduct } from "./product.controller.js";
+import { createOrganisationProduct, getOrganisationProducts } from "./product.controller.js";
 import { createProductEpic } from "./epic.controller.js";
 
 import {
@@ -9,7 +9,7 @@ import {
     loginOrganizationMember,
     createUserEnrollmentTicket,
     enrollOrganizationViaEnrollmentTicket,
-    loginUserByLoginOne
+    loginUserByLoginOne,
 } from "./organisationUser.controller.js";
 
 export {
@@ -30,6 +30,8 @@ export {
     createOrganisationProduct,
     createProductEpic,
 
+
+    getOrganisationProducts
 }
 
 // export * from './user.controller.js';
