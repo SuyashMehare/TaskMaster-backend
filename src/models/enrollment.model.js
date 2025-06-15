@@ -1,6 +1,6 @@
-import { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { Organization } from "./organization.model.js"; 
-import { OrganisationUser } from "./organizationUser.model";
+import { OrganisationUser } from "./organizationUser.model.js";
 
 const enrollmentSchema = new Schema({
     enrollmentId: {
@@ -8,7 +8,7 @@ const enrollmentSchema = new Schema({
         required: true,
         unique: true,
     },
-    organisationId: {
+    organizationId: {
         type: Schema.Types.ObjectId,
         ref: Organization, 
         required: true
@@ -24,7 +24,6 @@ const enrollmentSchema = new Schema({
     },
     expireIn: {
         type: Date,
-        required: true
     }
 }, {
     timestamps: true

@@ -1,3 +1,5 @@
+import { User } from "../models/user.model.js";
+
 function test(req, res) {
     res.json({
         message: 'hello'
@@ -29,7 +31,7 @@ async function createUser(req, res) {
           timezone: user.timezone
         });
       } catch (err) {        
-        res.status(500).json({ error: 'User creation failed' });
+        res.status(500).json({ error: 'User creation failed', reason:err });
       }
 }
 

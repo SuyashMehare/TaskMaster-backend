@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { testOrg } from "../controllers/index.js";
+import { createOrganisation, fetchOrganizationDetails } from "../controllers/index.js";
 const organisationRouter = Router();
 
-organisationRouter.post('/register', testOrg);
+organisationRouter
+.post('/register', createOrganisation)
+.post('/details', fetchOrganizationDetails)
+
 
 export {
     organisationRouter

@@ -2,19 +2,29 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
-import { organisationRouter, userRouter } from './routes/index.js';
+import { organisationRouter, userRouter,organizationUserRouter, productRouter, epicRouter } from './routes/index.js';
+
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true
+}));
 app.use(express.json());
 
 
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/organisations', organisationRouter);
+app.use('/api/v1/product', productRouter);
+app.use('/api/v1/epic', epicRouter);
+app.use('/api/v1/organisationUser', organizationUserRouter);
 
+const PORT = process.env.PORT || 5000;
 
 connectDB()
 .then(() => {
@@ -27,4 +37,3 @@ connectDB()
   process.exit(1);
 });
 
-const PORT = process.env.PORT || 5000;

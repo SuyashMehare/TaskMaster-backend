@@ -1,18 +1,20 @@
 import mongoose from 'mongoose';
 import { PLATFORM_ROLES, ROLE_TYPES, ORG_USER_ENROLLMENTS } from '../constants/roles.js';
+import { User } from './user.model.js';
+import { Organization } from './organization.model.js';
 
 const { Schema } = mongoose;
 
 const organisationUserSchema = new Schema({
     organizationId: {
         type: Schema.Types.ObjectId,
-        ref: 'Organization',
+        ref: Organization,
         required: true
     },
 
     userId: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: User,
         required: true
     },
 

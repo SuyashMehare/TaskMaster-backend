@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { OrganisationUser } from './organizationUser.model';
+import { OrganisationUser } from './organizationUser.model.js';
 
 const { Schema } = mongoose;
 
@@ -18,23 +18,23 @@ const organizationSchema = new Schema({
 
   superAdmin: {
     type: Schema.Types.ObjectId,
-    ref: OrganisationUser,
+    ref: 'OrganisationUser',
     required: true
   },
 
   assignees: [{
     type: Schema.Types.ObjectId,
-    ref: OrganisationUser
+    ref: 'OrganisationUser'
   }],
 
   waitingList: [{
     type: Schema.Types.ObjectId,
-    ref: OrganisationUser
+    ref: 'OrganisationUser'
   }],
 
   teams: [{
     type: Schema.Types.ObjectId,
-    ref: OrganisationUser
+    ref: 'OrganisationUser'
   }],
 
   plan: {
@@ -45,7 +45,6 @@ const organizationSchema = new Schema({
 
   planValidity: {
     type: Date, // Always stored as UTC in MongoDB
-    required: true
   }, // todo: maybe company timezone based validity along with UTC for correctness
 }, {
   timestamps: true

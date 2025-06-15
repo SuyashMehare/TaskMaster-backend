@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { DEPARTMENTS } from '../constants/department.js';
+import { DEPARTMENTS } from '../constants/departments.js';
 import { OrganisationUser } from "./organizationUser.model.js";
 
 const { Schema } = mongoose;
@@ -30,7 +30,7 @@ const teamSchema = new Schema({
 
   members: [{
     type: Schema.Types.ObjectId,
-    ref: OrganisationUser
+    ref: 'OrganisationUser'
   }]
 }, {
   timestamps: true
@@ -38,4 +38,4 @@ const teamSchema = new Schema({
 
 teamSchema.index({ organisationId: 1, label: 1 }, { unique: true });
 
-export default mongoose.model('Team', teamSchema);
+export const Team = mongoose.model('Team', teamSchema);
